@@ -1,0 +1,64 @@
+/* Reset default margin and padding */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center content vertically and horizontally */
+
+.background-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(/miku\ background.webp);
+    background-position: center;
+    background-size: cover;
+}
+.bg-opacity {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 3rem;
+}
+/* Style the header */
+h1 {
+    padding: 10px 20px;
+    border-radius: 1rem;
+    font-size: 54px;
+    margin-bottom: 10px;
+}
+p {
+    background-color: #ff2b2b;
+    color: #fff;
+    padding: 10px;
+    border-radius: 1rem;
+}
+/* Style the button */
+#startButton {
+    padding: 20px 40px;
+    margin: 20px;
+    font-size: 16px;
+    background-color: #1d1d1d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 1rem;
+}
+
+#startButton:hover {
+    background-color: #575757;
+}
+
+/* Style the sound level display */
+#soundLevel {
+    font-size: 20px;
+    margin-top: 20px;
+}
