@@ -46,6 +46,19 @@ h2 {
 h3 {
     margin: 0;
 }
+a {
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    color: #fff;
+    background-color: black;
+    padding: 5px;
+    border-radius: 1rem;
+    transition: 0.5s ease-in-out;
+    
+}
+a:hover {
+    scale: 90%;
+}
 /* Style the button */
 #startButton {
     padding: 20px 40px;
