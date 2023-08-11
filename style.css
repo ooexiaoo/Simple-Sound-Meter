@@ -23,8 +23,8 @@ body, h1, p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 10px;
     border-radius: 3rem;
 }
 /* Style the header */
@@ -40,10 +40,16 @@ p {
     padding: 10px;
     border-radius: 1rem;
 }
+h2 {
+    margin: 0;
+}
+h3 {
+    margin: 0;
+}
 /* Style the button */
 #startButton {
     padding: 20px 40px;
-    margin: 20px;
+    margin: 10px;
     font-size: 16px;
     background-color: #1d1d1d;
     color: #fff;
@@ -60,5 +66,5 @@ p {
 /* Style the sound level display */
 #soundLevel {
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
