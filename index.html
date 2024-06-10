@@ -3,103 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound Level Checker</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/noise-icon-13-2157951539.png"/>
+    <title>Word & Character Counter</title>
+    <link rel="icon" type="image/png" href="/anime girl background.jpeg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-container">
-        <div class="bg-opacity">
-            <h1>Sound Level Checker</h1>
-            <h3>Click the button below to start or pause checking sound levels:</h3>
-            <button id="startButton">Start</button>
-            <p id="soundLevel">Sound Level: <span id="level">0</span> dB</p>
-            <h2>Sound Level Library</h2>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Sound Level (dB)</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>20 dB</td>
-                <td>Quiet library</td>
-            </tr>
-            <tr>
-                <td>40 dB</td>
-                <td>Quiet office</td>
-            </tr>
-            <tr>
-                <td>60 dB</td>
-                <td>Normal conversation</td>
-            </tr>
-            <tr>
-                <td>70 dB</td>
-                <td>Busy street</td>
-            </tr>
-            <tr>
-                <td>80 dB</td>
-                <td>City traffic</td>
-            </tr>
-            <tr>
-                <td>100 dB</td>
-                <td>Jackhammer</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="https://github.com/ooexiaoo">Created by EXIA</a>
+    <div class="container">
+        <h1>Word & Character Counter</h1>
+        <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+        <div class="counter">
+            <p>Word Count: <span id="word-count">0</span></p>
+            <p>Character Count: <span id="char-count">0</span></p>
         </div>
     </div>
-    <script>
-        const startButton = document.getElementById('startButton');
-        const soundLevelDisplay = document.getElementById('level');
-        let audioContext;
-        let analyser;
-        let intervalId;
-
-        async function startSoundLevelCheck() {
-            if (audioContext && audioContext.state === 'running') {
-                // Pause sound level checking
-                audioContext.suspend();
-                clearInterval(intervalId);
-                startButton.textContent = 'Start';
-            } else {
-                // Request microphone access
-                try {
-                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    audioContext = new AudioContext();
-                    analyser = audioContext.createAnalyser();
-                    const microphone = audioContext.createMediaStreamSource(stream);
-                    microphone.connect(analyser);
-                    analyser.fftSize = 256;
-
-                    // Start updating sound levels
-                    audioContext.resume().then(() => {
-                        intervalId = setInterval(updateSoundLevel, 100);
-                        startButton.textContent = 'Pause';
-                    });
-                } catch (error) {
-                    console.error('Error accessing microphone:', error);
-                }
-            }
-        }
-
-        function updateSoundLevel() {
-            const dataArray = new Uint8Array(analyser.frequencyBinCount);
-            analyser.getByteFrequencyData(dataArray);
-            let sum = 0;
-            dataArray.forEach(value => sum += value);
-            const averageLevel = sum / dataArray.length;
-            const roundedLevel = averageLevel.toFixed(1);
-            soundLevelDisplay.textContent = ` ${roundedLevel} `;
-        }
-
-        startButton.addEventListener('click', () => {
-            startSoundLevelCheck();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
